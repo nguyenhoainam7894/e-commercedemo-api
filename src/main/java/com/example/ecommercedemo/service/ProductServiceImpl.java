@@ -27,17 +27,21 @@ public class ProductServiceImpl implements ProductService {
         Specification spec = Specification.where(null);
 
         PageRequest paging = PageRequest.of(filter.getPage() - 1, filter.getPageSize());
+
+//        System.out.println(filter.getNameProduct());
+//        System.out.println(filter.getName());
+        System.out.println(filter.getCategoryId());
         if (filter.getNameProduct() != null && filter.getNameProduct().length() > 0){
-            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.NAME, "=",filter.getNameProduct())));
+            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.NAME, "LIKE",filter.getNameProduct())));
         }
         if (filter.getCategoryId() > 0){
-            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.ID,"=",filter.getCategoryId())));
+            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.CATEGORYID,"=",filter.getCategoryId())));
         }
         if (filter.getMaxPrice() > 0){
-            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.MAX_PRICE,"<=",filter.getMaxPrice())));
+            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.PRICE,"<=",filter.getMaxPrice())));
         }
         if (filter.getMinPrice() > 0){
-            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.MIN_PRICE,">=",filter.getMinPrice())));
+            spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.PRICE,">=",filter.getMinPrice())));
         }
         if (filter.getId() > 0){
             spec = spec.and(new ProductSpecification(new SearchCriteria(ObjectFilter.ID,"=",filter.getId())));

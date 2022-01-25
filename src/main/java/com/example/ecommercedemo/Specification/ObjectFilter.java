@@ -18,11 +18,12 @@ public class ObjectFilter {
     public static final String PHONE = "phone";
     public static final String EMAIL = "email";
     public static final String CREATED_AT = "createdAt";
+    public static final String CATEGORYID = "categoryId";
 
     private int id;
-    private int categoryId;
-    private double minPrice;
-    private double maxPrice;
+    private long categoryId;
+    private int minPrice;
+    private int maxPrice;
     private int page;
     private int pageSize;
     private String name;
@@ -35,7 +36,7 @@ public class ObjectFilter {
 
     public static final class ObjectFilterBuilder{
         private int id;
-        private int categoryId;
+        private long categoryId;
         private int minPrice;
         private int maxPrice;
         private int page;
@@ -61,7 +62,7 @@ public class ObjectFilter {
             return this;
         }
 
-        public ObjectFilterBuilder withCategoryId(int categoryId) {
+        public ObjectFilterBuilder withCategoryId(long categoryId) {
             this.categoryId = categoryId;
             return this;
         }
