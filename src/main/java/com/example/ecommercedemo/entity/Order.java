@@ -43,6 +43,8 @@ public class Order {
     @Column(name = "account_id")
     private Long accountId;
 
+    private int totalPrice;
+
 
     @ManyToOne()
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)

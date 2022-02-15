@@ -17,6 +17,16 @@ public class OrderDetail  {
     @EmbeddedId
     private OrderDetailId id = new OrderDetailId();
 
+    @Column(name = "product_id",updatable = false,insertable = false)
+    private Long productId;
+
+    @Column(name = "order_id",updatable = false,insertable = false)
+    private int orderId;
+
+    private int quantity;
+
+    private long unitprice;
+
     @ManyToOne()
     @JoinColumn(name = "order_id")
     @MapsId("orderId")
@@ -28,7 +38,6 @@ public class OrderDetail  {
     @MapsId("productId")
     private Product product;
 
-    private int quantity;
-    private long unitprice;
+
 
 }
